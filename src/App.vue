@@ -5,6 +5,8 @@
 
   <section class="container">
 
+    <div v-if="modalResposta" class="avisoSucesso">Cadastrado com sucesso</div>
+
     <div class="formulario-header">
       <h1>Formulário de cadastro de usuário</h1>
       <p>Adicioe e gerencie sua lista telefônica</p>
@@ -28,9 +30,9 @@
         </div>
       </li>
 
-      <li>
-        <p><strong>Nome: </strong>Carlos Nascimento</p>
-        <p><strong>E-mail:</strong>carlosnascimento@gmail.com</p>
+      <li v-for="contato in contatos" :key="contato.id">
+        <p><strong>Nome: </strong>{{contato.nome}}</p>
+        <p><strong>E-mail:</strong>{{contato.email }}</p>
         <div class="actions">
           <button class="btn-editar">Editar</button>
           <button class="btn-remover">Excluir</button>
@@ -38,8 +40,6 @@
       </li>
 
     </ul>
-
-    <div v-if="modalResposta" class="avisoSucesso">Sucesso....</div>
 
   </section>
 </template>
@@ -56,7 +56,23 @@ const formulario = ref({
 const contatos = ref([])
 
 const adicionarUsuario = () =>{
-  alert("Adicionado...")
+
+  const contatoExistente = contatos.value.find(u=>u.email===formulario.value.email)
+
+  if(!contatoExistente){
+    contatos.value.push({
+      id:Date.now(),
+      nome:formulario.value.nome,
+      email:formulario.value.email
+    })
+    //mostra resposta de sucesso ao usuário
+    modalResposta.value = true;
+    tempoMensagemResposta();
+    limparCampos();
+  }
+  else{
+    alert("Contato já cadastrado! Tente outro")
+  }  
 }
 
 const abrirModalEdicao=()=>{
@@ -76,4 +92,9 @@ const tempoMensagemResposta =()=>{
    }, 1000);
 }
 
+
+const limparCampos =()=>{
+  formulario.value.nome = ''
+  formulario.value.email = ''
+}
 </script>

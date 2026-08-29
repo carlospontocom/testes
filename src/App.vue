@@ -29,7 +29,7 @@
         <p><strong>E-mail:</strong>{{contato.email }}</p>
         <div class="actions">
           <button class="btn-editar">Editar</button>
-          <button class="btn-remover">Excluir</button>
+          <button class="btn-remover" @click="remover(contato.id)">Excluir</button>
         </div>
       </li>
     </ul>
@@ -86,9 +86,12 @@ const abrirModalEdicao=()=>{
   }
 
 
-const remover=()=>{
-  modalResposta.value = true;
-  tempoMensagemResposta();
+const remover=(id)=>{
+  if(confirm("Deseja cancelar?")){
+       contatos.value = contatos.value.filter(usuario=>usuario.id !== id)
+  }
+  //modalResposta.value = true;
+  //tempoMensagemResposta();
 }
 
 const tempoMensagemResposta =()=>{

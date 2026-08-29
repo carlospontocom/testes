@@ -88,7 +88,7 @@ const abrirModalEdicao=()=>{
 
 const remover=(id)=>{
   if(confirm("Deseja cancelar?")){
-      contatos.value = contatos.value.find(usuario=>usuario.id !== id)
+       contatos.value = contatos.value.filter(usuario=>usuario.id !== id)
   }
   //modalResposta.value = true;
   //tempoMensagemResposta();

@@ -110,3 +110,10 @@ button{
   padding:10px 1.5rem;
   border-radius: 5px;
 }
+
+.field{
+   padding:1rem;
+  display:block;
+  width:100%;
+  margin:.6rem 0;
+}

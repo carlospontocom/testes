@@ -52,8 +52,8 @@
           <h1>Formulário de Atualização</h1>
         </div>
         <form @submit.prevent="salvarEdicao" class="formulario-add-contato">
-          <input type="text" v-model="formEditar.nome" placeholder="Nome completo" required/>
-          <input type="email" v-model="formEditar.email" placeholder="E-mail" required/>
+          <input type="text" v-model="formEditar.nome" placeholder="Nome completo" class="font-maiuscula" required/>
+          <input type="email" v-model="formEditar.email" placeholder="E-mail" class="font-minuscula" required/>
           <div class="modal-actions">
             <button type="submit" class="btn-add" @click="salvarEdicao(contato.id)">Atualizar</button>
             <button class="btn-close" @click="cancelarEdicao">Cancelar</button>

@@ -9,13 +9,13 @@
 
     <div class="formulario-header">
       <h1>Formulário de cadastro de usuário</h1>
-      <p>Adicioe e gerencie sua lista telefônica</p>
-      <span>Organize seus números e e-mais</span>
+      <p>Adicione e gerencie sua lista telefônica</p>
+      <span>Organize seus telefones e e-mails</span>
     </div>
 
     <form @submit.prevent="adicionarUsuario" class="formulario-add-contato">
-      <input type="text" v-model="formulario.nome" placeholder="Nome completo" />
-      <input type="text" v-model="formulario.email" placeholder="E-mail" />
+      <input type="text" v-model="formulario.nome" placeholder="Nome completo" class="font-maiuscula" required/>
+      <input type="email" v-model="formulario.email" placeholder="E-mail" class="font-minuscula" required/>
       <button type="submit" class="btn-add">Adicionar</button>
     </form>
 
@@ -38,17 +38,14 @@
       Nenhum contato encontrado.
     </p>
 
-
-
     <div class="window-editar" v-if="exibirModalEditar">
       <div class="modal-content">
         <div class="formulario-header">
           <h1>Formulário de Atualização</h1>
         </div>
-
         <form @submit.prevent="salvarEdicao" class="formulario-add-contato">
-          <input type="text" v-model="formEditar.nome" placeholder="Nome completo" />
-          <input type="text" v-model="formEditar.email" placeholder="E-mail" />
+          <input type="text" v-model="formEditar.nome" placeholder="Nome completo" required/>
+          <input type="email" v-model="formEditar.email" placeholder="E-mail" required/>
           <div class="modal-actions">
             <button type="submit" class="btn-add" @click="salvarEdicao(contato.id)">Atualizar</button>
             <button class="btn-close" @click="cancelarEdicao">Cancelar</button>
@@ -152,5 +149,4 @@ const filtrados = computed(()=>{
 })
 
 const totalFiltrados = filtrados.value.length;
- 
 </script>

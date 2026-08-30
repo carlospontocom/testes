@@ -25,8 +25,16 @@
 
     <ul class="lista-contatos">
       <li v-for="contato in filtrados" :key="contato.id">
-        <p><strong>Nome: </strong>{{ contato.nome }}</p>
-        <p><strong>E-mail:</strong>{{ contato.email }}</p>
+        <div class="box-int">
+          <span>Nome</span>
+          <p class="font-maiuscula"> {{ contato.nome }}</p>
+        </div>
+
+        <div class="box-int">
+          <span>E-mail</span>
+          <p class="font-minuscula"> {{ contato.email }}</p>
+        </div>
+
         <div class="actions">
           <button class="btn-editar" @click="editarDados(contato.id)">Editar</button>
           <button class="btn-remover" @click="remover(contato.id)">Excluir</button>
